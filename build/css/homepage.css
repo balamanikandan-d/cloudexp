@@ -1,0 +1,111 @@
+body{
+    background-color: grey;
+    background-repeat: no-repeat;
+    /* background-image: url("../images/bg.jpg"); */
+    
+    
+}
+
+.tab {
+    float: left;
+    width: 18%;
+    height: 100vh;
+    border-top: 1px solid gold;
+    border-right: 1px solid gold;
+    background-color: gray;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button,.tab1 button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+    color: honeydew;
+  }
+  /* .tab button{
+    text-align: left;
+  }
+  .tab1 button{
+    text-align: right;
+  } */
+  
+  /* Change background color of buttons on hover */
+  .tab button :hover {
+    background-color: darkgray;
+    color:black;
+  }
+  .tab1 button :hover {
+    background-color: darkgray;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: #ccc;
+    color:black;
+  }
+  .tab1 button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    width: 59.5%;
+    height:70vh;
+    border-left: none;
+    color: black;
+    padding : 2%;
+    text-align: center;
+    border-top:  1px solid gold;
+    background-color: lightgrey;
+    
+  }
+.tab1{
+    float: right;
+    width: 18%;
+    height: 100vh;
+    text-align: right;
+    border-top:  1px solid gold;
+    border-left: 1px solid gold;
+    background-color: grey;
+    color: white;
+}
+
+h1{
+ text-align: center;
+ background: -webkit-linear-gradient(grey, gold);
+ -webkit-text-fill-color: transparent;
+ -webkit-background-clip: text;
+
+}
+h2{
+    text-align: center;
+    color: red;
+}
+h3{
+    color:rgb(110, 60, 156);
+}
+img{
+    border : 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    /* padding: 5px; */
+    width: 30%;
+    height:30%;
+  }
+  img:hover{
+    box-shadow : 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+figcaption{
+    font-family: 'Times New Roman', Times, serif;
+    color:rgb(110, 60, 156);
+    font-family: Arial, Helvetica, sans-serif;
+}

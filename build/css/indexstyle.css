@@ -1,0 +1,76 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-image: url("../images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 65% 100vh;
+    font-family: 'Arial';  
+    /* background-color: #f8dfda; */
+    background-color: #6d6c93;
+
+} 
+.login{  
+    width: 22%;  
+    color: blanchedalmond;
+    overflow: hidden;  
+    margin: auto;  
+    margin: 28vh 0 0 69%;  
+    padding: 40px;  
+    background: #6d6c93;  
+    border-radius: 15px ;  
+    border : 1px solid blanchedalmond;
+}
+.tab {
+    widows: 60%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #6d6c93 ;
+    background-color: #f1f1f1;
+    border-radius: 14px;
+  }   
+.tab button {
+        background-color: inherit;
+        color:#6d6c93;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 10px;
+        transition: 0.3s;
+        font-size: large;
+        position: relative;
+        width: 50%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+.tab button:hover {
+    background-color: grey;
+  }
+
+.tabcontent {
+    display: none;
+    /* padding: 6px 12px; */
+    border-top: none;
+  }
+ 
+#log{  
+    width: 25%;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    background-color: #292685;  
+    color: wheat;
+    font-size: medium;
+}  
+label{
+position: relative;
+width: 50%;
+}
+#Uname,#Pass{
+    position: relative;
+    left:5%;
+    width: 50%;
+}
+
