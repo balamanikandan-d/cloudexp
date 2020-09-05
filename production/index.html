@@ -1,68 +1,177 @@
-<!DOCTYPE html>    
-<html>    
-<head>    
-    <title>Login Form</title>    
-    <link href="../build/css/indexstyle.css" rel="stylesheet">  
-</head>    
-<body>   
-  
-  <h2 style="right:5%;top:25vh;text-align: right; position: relative;color: aliceblue;">Integrated Platform Controller</h2> 
-<div class="login">  
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Form</title>
+  <link href="./build/css/indexstyle.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <h2 style="right:5%;top:25vh;text-align: right; position: relative;color: aliceblue;">Integrated Platform Controller
+  </h2>
+
+  <div class="login" id="loginpanel">
+
     <div class="tab">
-        <button id="defaultOpen" class="tablinks" onclick="openCity(event, 'External')">External</button><span></span>
-        <button class="tablinks" onclick="openCity(event, 'Internal')">Internal</button>
+      <button id="defaultOpen" class="tablinks" onclick="openCity(event, 'External')">External</button><span></span>
+      <button class="tablinks" onclick="openCity(event, 'Internal')">Internal</button>
     </div>
     <br><br>
-    <form id="login" method="get" action="login.php">  
-      
-        <div id="External" class="tabcontent">
-            <label><b>User Name</b></label>
-            <input type="text" name="Uname" id="Uname" placeholder="Username">    
-            <br><br>    
-            <input type="checkbox" id="check">    
-            <span>Remember me</span>   
-            <br><br>
-            <input type="button" name="log" id="log" value="Log In">
-            
-            <br><br>    
-            
-        </div>
-        
-        <div id="Internal" class="tabcontent">
-            <label><b>User Name</b></label>    
-            <input type="text"  style = "align-content:right;position: relative;" name="Uname" id="Uname" placeholder="Username">    
-            <br><br>    
-            <label><b>Password     
-            </b>    
-            </label>    
-            <input type="Password" style = "align-content:right;position: relative;" name="Pass" id="Pass" placeholder="Password">    
-            <br><br> 
-             
-            <a href = "adminhome.html" target="blank"><input type="button" name="log" id="log" value="Log In"></a> 
-            <a href = "newuser.html" target="blank"><input type="button" name="new" id="new" value="New User"></a>      
-            <br><br>    
-   
-            <a href="#">Forgot Password</a>    
-        </div>  
-    </form>
-</div>
-<script>
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-</body>    
-</html>   
+    <div id="External" class="tabcontent">
+      <form id="login" method="get" action="login.php">
+        <label><b>User Name</b></label>
+        <input type="text" name="Uname" id="Uname" placeholder="Username">
+        <br><br>
+        <input type="checkbox" id="check">
+        <span>Remember me</span>
+        <br><br>
+        <input type="button" name="log" id="log" value="Log In">
+
+        <br><br>
+      </form>
+    </div>
+
+    <div id="Internal" class="tabcontent">
+      <form id="loginfun">
+        <label><b>User Name</b></label>
+        <input type="text" style="align-content:right;position: relative;" name="Uname" id="empid"
+          placeholder="Username">
+        <br><br>
+        <label><b>Password
+          </b>
+        </label>
+        <input type="Password" style="align-content:right;position: relative;" name="Pass" id="password"
+          placeholder="Password">
+        <br><br>
+
+        <input type="submit" name="log" id="log" value="Log In">
+      </form>
+      <a href="./newuser.html" target="blank"><input type="button" name="new" id="new" value="New User"></a>
+      <br><br>
+      <a href="#" id="openForgotPanel">Forgot Password</a>
+    </div>
+
+  </div>
+
+  <div class="login" id="forgotpanel">
+    <a href="#" id="hideForgotPanel">Back</a>
+    <form id="forgotpassword">
+      <label><b>empid</b></label>
+      <input type="text" style="align-content:right;position: relative;" name="Uname" id="empid1"
+        placeholder="Username">
+      <br><br>
+
+      <input type="submit" name="log" id="log" value="reset password">
+    </form>
+  </div>
+
+  <script>
+    function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+  <script src="./js/jquery.js"></script>
+  <script>
+    $(function () {
+
+      $('#loginpanel').show()
+      $('#forgotpanel').hide()
+
+      $("#openForgotPanel").on('click', function (e) {
+        $('#loginpanel').hide()
+        $('#forgotpanel').show()
+      })
+
+      $("#hideForgotPanel").on('click', function (e) {
+        $('#loginpanel').show()
+        $('#forgotpanel').hide()
+      })
+
+      $('#loginfun').on('submit', function (e) {
+        e.preventDefault();
+        // alert("asdsad")
+        var user = {};
+        user.empid = $("#empid").val();
+        user.password = $("#password").val();
+        // user.adminconsole = false
+        var url = "http://localhost:3002/"
+        $.ajax({
+          url: url + "signin",
+          type: 'post',
+          dataType: 'json',
+          data: JSON.stringify(user),
+          contentType: 'application/json',
+          success: function (res) {
+            if (res) {
+
+              if (res.result == 'Sign in Successfully') {
+                localStorage.setItem("token", JSON.stringify(res.uuid))
+                if (res.adminconsole == "true") {
+                  window.location.href = './password.html'
+                } else {
+                  window.location.href = './password.html'
+                }
+              } else {
+                alert(res.result)
+              }
+            } else {
+              alert("error");
+            }
+          },
+
+        });
+      })
+
+      $('#forgotpassword').on('submit', function (e) {
+        e.preventDefault();
+
+        var user = {};
+
+        user.empid = $("#empid1").val();
+
+        var url = "http://localhost:3002/"
+        $.ajax({
+          url: url + "resetpassword",
+          type: 'post',
+          dataType: 'json',
+          data: JSON.stringify(user),
+          contentType: 'application/json',
+          success: function (res) {
+            if (res) {
+              alert(res.result)
+              if (res.result == 'Sign in Successfully') {
+                localStorage.setItem("token", JSON.stringify(res.result))
+                if (res.adminconsole == "true") {
+                  window.location.href = './adminhome.html'
+                } else {
+
+                }
+              }
+            } else {
+              alert("error");
+            }
+          },
+
+        });
+      })
+
+    })
+  </script>
+</body>
+
+</html>

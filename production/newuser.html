@@ -1,31 +1,71 @@
-<!DOCTYPE html>    
-<html>    
-<head>    
-    <title>New User Registration</title>  
-    <link href="../build/css/newuser.css" rel="stylesheet">    
-   
-</head>    
-<body style="background-color:#6d6c93;">   
-  
-  <h2>Integrated Platform Controller</h2> 
-<div class="newuser">
-    <form id="login" method="get" action="">  
-        <input class = input type="text" name="fname" id="fname" placeholder="FirstName"><br><br>     
-        <input class = input type="text" name="Uname" id="lname" placeholder="LastName">  <br><br> 
-        <input class = input pattern=".+@tcs.com" size="30" required type="email" name="Uname" id="mail" placeholder="TCS email">  <br><br> 
-        <input class = input type="text" name="Uname" id="empid" placeholder="TCS Employee ID">  <br><br> 
-        <input class = input type="text" name="Uname" id="phone" placeholder="Contact number">  <br><br> 
-        <input class = input type="text" name="Uname" id="location" placeholder="Location">  <br><br> 
-        <input class = input type="text" name="Uname" id="role" placeholder="Role eg.,ASE,SE,etc">  
-          
+<!DOCTYPE html>
+<html>
 
-        <br><br>    
-        <input type="button" name="log" id="signup" value="SignUp">
-        <br><br>    
-    </form>
-</div>
-<script>
+<head>
+    <title>New User Registration</title>
+    <link href="./build/css/newuser.css" rel="stylesheet">
 
-</script>
-</body>    
-</html>   
+</head>
+
+<body style="background-color:#6d6c93;">
+
+    <h2>Integrated Platform Controller</h2>
+    <div class="newuser">
+        <form id="login">
+            <input class=input type="text" name="fname" id="fname" placeholder="FirstName"><br><br>
+            <input class=input type="text" name="Uname" id="lname" placeholder="LastName"> <br><br>
+            <input class=input type="password" name="password" id="password" placeholder="Password"> <br><br>
+            <input class=input size="30" required type="email" name="Uname" id="mail" placeholder="TCS email"> <br><br>
+            <input class=input type="text" name="Uname" id="empid" placeholder="TCS Employee ID"> <br><br>
+            <input class=input type="text" name="Uname" id="phone" placeholder="Contact number"> <br><br>
+            <input class=input type="text" name="Uname" id="location" placeholder="Location"> <br><br>
+            <input class=input type="text" name="Uname" id="role" placeholder="Role eg.,ASE,SE,etc">
+
+
+            <br><br>
+            <input type="submit" name="log" id="signup" value="SignUp">
+            <br><br>
+        </form>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#login').on('submit', function (e) {
+                e.preventDefault();
+                // alert("asdsad")
+                var user = {};
+                user.firstname = $("#fname").val();
+                user.password = $("#password").val();
+                user.lastname = $("#lname").val();
+                user.email = $("#mail").val();
+                user.empid = $("#empid").val();
+                user.phone = $("#phone").val();
+                user.location = $("#location").val();
+                user.role = $("#role").val()
+                var url = "http://localhost:3002/"
+                $.ajax({
+                    url: url + "signup",
+                    type: 'post',
+                    dataType: 'json',
+                    data: JSON.stringify(user),
+                    contentType: 'application/json',
+                    success: function (res) {
+                        if (res) {
+                            alert(res.result)
+                            if(res.result == "Sign up successfull") {
+                                window.location.href= "./index.html"
+                            }
+                        } else {
+                            alert("error");
+                        }
+                    },
+
+                });
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>
