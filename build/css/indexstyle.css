@@ -2,7 +2,7 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-image: url("../images/bg.jpg");
+    background-image: url("images/bg.jpg");
     background-repeat: no-repeat;
     background-size: 65% 100vh;
     font-family: 'Arial';  
@@ -10,7 +10,7 @@ body
     background-color: #6d6c93;
 
 } 
-.login{  
+.login,.new{  
     width: 22%;  
     color: blanchedalmond;
     overflow: hidden;  
@@ -52,10 +52,11 @@ body
     display: none;
     /* padding: 6px 12px; */
     border-top: none;
+    position: relative;
   }
  
-#log{  
-    width: 25%;  
+#log,#new{  
+    width: 30%;  
     height: 30px;  
     border: none;  
     border-radius: 17px;  
@@ -69,8 +70,7 @@ position: relative;
 width: 50%;
 }
 #Uname,#Pass{
-    position: relative;
-    left:5%;
-    width: 50%;
+   position: relative;
+   width: 50%;
 }
 
