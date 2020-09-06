@@ -122,9 +122,9 @@
               if (res.result == 'Sign in Successfully') {
                 localStorage.setItem("token", JSON.stringify(res.uuid))
                 if (res.adminconsole == "true") {
-                  window.location.href = './password.html'
+                  window.location.href = './adminhome.html'
                 } else {
-                  window.location.href = './password.html'
+                  window.location.href = './userhome.html'
                 }
               } else {
                 alert(res.result)
