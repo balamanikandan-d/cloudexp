@@ -27,7 +27,56 @@
     <link href="./vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="./build/css/custom.min.css" rel="stylesheet">
+    <link href="./build/css/custom.css" rel="stylesheet">
+    
+    <style>
+    .tab {
+      float: left;
+      /* border: 1px solid #ccc; */
+      background-color:inherit;
+      width: 20%;
+      height:600px;
+    }
+   
+    .tab button {
+      display: block;
+      background-color: inherit;
+      color: black;
+      padding: 22px 16px;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+    .tabcontent {
+      float: left;
+      align-content: center;
+      background-color: inherit;
+      padding: 0px 12px;
+      border: 1px solid #ccc;
+      width: 60%;
+      position: relative;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: large;
+      height: 600px;
+    }
+    img{
+      border : 1px solid #ddd;
+      /* border-radius: 4px; */
+      position: relative;
+      align-items: center;
+    /* padding: 5px; */
+      width: 75%;
+      height:75%;
+      
+    }
+    img:hover{
+      box-shadow : 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }
+      </style>
   </head>
 
   <body class="nav-md">
@@ -44,7 +93,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/" alt="..." class="img-circle profile_img">
+                <img style="width: 70%;" src="images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -67,7 +116,7 @@
                       <li><a href="password.html">Password reset requests</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-sign-out"></i> Log Out <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="index.html"><i class="fa fa-sign-out"></i> Log Out <span class="fa fa-chevron-down"></span></a>
                    
                   </li>
                   
@@ -97,7 +146,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/" alt="">Admin
+                    <img src="images/user.png" alt="">Admin
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="usergroup.html"> User Group Association</a>
@@ -106,7 +155,7 @@
                         <span>Password reset requests</span>
                       </a>
                  
-                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="index.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
 
@@ -119,11 +168,462 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <!-- top tiles -->
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'sciencelogic')" id="defaultOpen">
+              <img src="./images/science.jpg">
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'azure')">
+              <img src="./images/azure.png">
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'cloudexp')">
+              <img src="./images/cloud.png">
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'commvault')">
+              <img src="./images/cm.png">
+            </button>
+          </div>
           
-          <!-- /top tiles -->
+          <div id="sciencelogic" class="tabcontent">
+            <h3>ScienceLogic</h3>
+            <style>
+              .sltab {
+                float: left;
+                background-color: inherit;
+                width: 50%;
+                height: 300px;
+              }
+              
+              /* Style the buttons inside the tab */
+              .sltab button {
+                display: block;
+                background-color: inherit;
+                color: black;
+                padding: 22px 16px;
+                width: 100%;
+                border: none;
+                outline: none;
+                text-align: center;
+                cursor: pointer;
+                font-size: 17px;
+              }
+              
+              /* Change background color of buttons on hover */
+              
+              
+              /* Style the tab content */
+              .sltabcontent {
+                float: left;
+                padding: 0px 12px;
+                color: black;
+                width: 45%;
+                border-left: none;
+                align-content: center;
+                text-align: center;
+                display: none;
+                height: 300px;
+                position: relative;
+              }
+              .sltabcontent p{
+                  top: 25%;
+                  left: 20%;
+                  position: absolute;
+              }
+              </style>
+                 
+              
+              
+              <div class="sltab">
+                <button class="tablinks" onmouseover="opensl(event, 'a')">
+                  <a href = "https://cloudexponence.sciencelogic.net" target="_blank" style="text-decoration:none;">EU-ScienceLogic Console(LDAP)</a>
+                </button>
+                <button class="tablinks" onmouseover="opensl(event, 'b')">
+                  <a href = "https://tcs-us-cloudexponence.sciencelogic.net/" target="_blank" style="text-decoration:none;">US-ScienceLogic Console(LDAP)</a>
+                </button>
+                <button class="tablinks" onmouseover="opensl(event, 'c')">
+                  <a href = "https://cloudexponence.sciencelogic.net/?nosaml" style="text-decoration:none;" target="_blank">EU-ScienceLogic Console(Local)</a>
+                </button>
+                <button class="tablinks" onmouseover="opensl(event, 'd')">
+                  <a href = "https://tcs-us-cloudexponence.sciencelogic.net/?nosaml" target="_blank" style="text-decoration:none;">US-ScienceLogic Console(Local)</a>
+                </button>
+                <button class="tablinks" onmouseover="opensl(event, 'e')">
+                  <a href = "https://support.sciencelogic.com/s" target="_blank" style="text-decoration:none;">ScienceLogic Support Portal</a>
+                </button>
+              </div>
+              
+              <div id="a" class="sltabcontent" >
+                  <p> Science Logic Poral  URL for UK Instance for LDAP Users</p>
+              </div>
+              
+              <div id="b" class="sltabcontent">
+                  <p> Science Logic Poral  URL for US Instance for LDAP Users</p>
+              </div>
+              
+              <div id="c" class="sltabcontent">
+                  <p>Science Logic Poral  URL for UK Instance for Local Users </p>
+              </div>
+              
+              <div id="d" class="sltabcontent">
+                  <p>Science Logic Poral  URL for US Instance for Local Users </p>
+              </div>
+              <div id="e" class="sltabcontent" >
+                  <p> ScienceLogic Support URL for raising Case with Vendor</p>
+              </div>
+              
+                
+              
+              
+              <script>
+              function opensl(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("sltabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+              }
+              </script>
+          </div>
+          
+          
+          <div id="azure" class="tabcontent">
+            <h3>Microsoft Azure</h3>
+            <div  class = "col-md-6" id = "az" style="top:25%;text-align:center">
+              <a href = "https://portal.azure.com" target="_blank">Azure Portal</a>
+            </div>
+            <div class = "col-md-6" id = "az_disp">
+              Access to Azure portal
+            </div>
+            <style>
+              #az_disp{
+                display: none;
+                text-align: center;
+                top:25%;
+              }
+              #az:hover + #az_disp{
+                display: block;
+                color: black;
+              }
+            </style>
+            
+          </div>
+          
+          <div id="cloudexp" class="tabcontent">
+            <h3>Cloud Exponence Ticketing Tool</h3>
+            <div  class = "col-md-6" id = "cloudexp" style="text-align: center;top: 25%;">
+              <a href = "https://byoa.tcsicc.com/CLOUDEXPONENCE_SUPPORT/LoginPage.html" target="_blank">BYOA Ticketing Tool</a>
+            </div>
+            <div class = "col-md-6" id = "cloudexp_disp">
+              BYOA Portal. This portal is used by the Cloud Exponence team to capture any issues related to the Cloud Exponence Platform.
+            </div>
+            <style>
+              #cloudexp_disp{
+                display: none;
+                text-align: center;
+                top:25%;
+              }
+              #cloudexp:hover + #cloudexp_disp{
+                display: block;
+                color: black;
+              }
+            </style>
+            
+          </div>
 
-         
+          <div id="commvault" class="tabcontent">
+            <h3>CommVault</h3>
+            <div  class = "col-md-6" id = "commvault" style="top:25%;text-align:center">
+              <a href = "https://ma.commvault.com" target="_blank">CommVault Support Portal</a>
+            </div>
+            <div class = "col-md-6" id = "commvault_disp">
+              Support portal for Commvault
+            </div>
+            <style>
+              #commvault_disp{
+                display: none;
+                text-align: center;
+                top:25%;
+              }
+              #commvault:hover + #commvault_disp{
+                display: block;
+                color: black;
+              }
+            </style>
+            
+          </div>
+
+          <div id="aws" class="tabcontent">
+            <h3>Amazon Web Services</h3>
+            <div  class = "col-md-6" id = "aws" style="top:25%;text-align:center">
+              <a href = "https://console.aws.amazon.com/console/home" target="_blank">AWS Console URL</a>
+            </div>
+            <div class = "col-md-6" id = "aws_disp">
+              Login to AWS portal
+            </div>
+            <style>
+              #aws_disp{
+                display: none;
+                text-align: center;
+                top:25%;
+              }
+              #aws:hover + #aws_disp{
+                display: block;
+                color: black;
+              }
+            </style>
+            
+          </div>
+
+          <div id="qualys" class="tabcontent">
+            <h3>Qualys</h3>
+            <style>
+              .qualystab {
+                float: left;
+                background-color: inherit;
+                width: 50%;
+                top: 10%;
+                /* position: absolute; */
+                height: 300px;
+              }
+              
+              /* Style the buttons inside the tab */
+              .qualystab button {
+                display: block;
+                background-color: inherit;
+                color: black;
+                padding: 22px 16px;
+                width: 100%;
+                border: none;
+                outline: none;
+                text-align: center;
+                cursor: pointer;
+                font-size: 17px;
+              }
+              
+              /* Change background color of buttons on hover */
+              
+              
+              /* Style the tab content */
+              .qualystabcontent {
+                float: left;
+                top: 10%;
+                position: relative;
+                padding: 0px 12px;
+                color:black;
+                width: 45%;
+                border-left: none;
+                align-content: center;
+                text-align: center;
+                height: 300px;
+                display: none;
+              }
+              .qualystabcontent p{
+                position:absolute;
+                left: 20%;
+                top: 25%;
+              }
+              </style>
+                 
+              
+              
+              <div class="qualystab">
+                <button class="tablinks" onmouseover="openqualys(event, 'demo')">
+                  <a href = "https://qualysguard.qg1.apps.qualys.in/qglogin/index.html" target="_blank" style="text-decoration:none;">Qualys SaaS Demo Portal</a>
+                </button>
+                <button class="tablinks" onmouseover="openqualys(event, 'prod')">
+                  <a href = "https://qualysguard.qg2.apps.qualys.eu" target="_blank" style="text-decoration:none;">Qualys SaaS Prod Portal(local)</a>
+                </button>
+                <button class="tablinks" onmouseover="openqualys(event, 'sso')">
+                  <a href = "https://qualysguard.qg2.apps.qualys.eu/fo/login.php?idm_key=saml2_226c38552e42" style="text-decoration:none;" target="_blank">Qualys SaaS Prod Portal(SSO)</a>
+                </button>
+                <button class="tablinks" onmouseover="openqualys(event, 'support')">
+                  <a href = "https://www.qualys.com/support" target="_blank" style="text-decoration:none;">Qualys SaaS Support Portal</a>
+                </button>
+              </div>
+              
+              <div id="demo" class="qualystabcontent" >
+                  <p>Qualys Demo Portal</p>
+              </div>
+              
+              <div id="prod" class="qualystabcontent">
+                  <p>Qualys Production Portal</p>
+              </div>
+              
+              <div id="sso" class="qualystabcontent">
+                  <p>Qualys Production Portal Single Sign On</p>
+              </div>
+              
+              <div id="support" class="qualystabcontent">
+                  <p>Qualys Support portal</p>
+              </div>
+                
+              
+              
+              <script>
+              function openqualys(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("qualystabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                  tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                  tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+              }
+              </script>
+            
+          </div>
+
+          <div id="servicenow" class="tabcontent">
+            <h3>ServiceNow</h3>
+            <style>
+            .sntab {
+              float: left;
+              background-color: inherit;
+              width: 50%;
+              height: 300px;
+            }
+            
+            /* Style the buttons inside the tab */
+            .sntab button {
+              display: block;
+              background-color: inherit;
+              color: black;
+              padding: 22px 16px;
+              width: 100%;
+              border: none;
+              outline: none;
+              text-align: center;
+              cursor: pointer;
+              font-size: 17px;
+            }
+            
+            /* Change background color of buttons on hover */
+            
+            
+            /* Style the tab content */
+            .sntabcontent {
+              float: left;
+              padding: 0px 12px;
+              
+              width: 45%;
+              border-left: none;
+              align-content: center;
+              text-align: center;
+              height: 300px;
+              display: none;
+            }
+            .sntabcontent p{
+                top: 25%;
+                left: 15%;
+                color: black;
+                position: relative;
+            }
+            </style>
+               
+            
+            
+            <div class="sntab">
+              <button class="tablinks" onmouseover="opensn(event, 'sa')">
+                <a href = "https://tcsedev.service-now.com" target="_blank" style="text-decoration:none;">ServiceNow Dev  Platform URL</a>
+              </button>
+              <button class="tablinks" onmouseover="opensn(event, 'sb')">
+                <a href = "https://tcse.service-now.com" target="_blank" style="text-decoration:none;">ServiceNow Prod Platform URL</a>
+              </button>
+              <button class="tablinks" onmouseover="opensn(event, 'sc')">
+                <a href = "https://tcsetest.service-now.com" style="text-decoration:none;" target="_blank">ServiceNow Test  Platform URL</a>
+              </button>
+              <button class="tablinks" onmouseover="opensn(event, 'sd')">
+                <a href = "https://tcse.service-now.com/cloudexponence" target="_blank" style="text-decoration:none;">Cloud Exponence Portal</a>
+              </button>
+              <button class="tablinks" onmouseover="opensn(event, 'se')">
+                <a href = "https://tcse.service-now.com/msp_sp" target="_blank" style="text-decoration:none;">ServiceNow Ticketing Tool</a>
+              </button>
+            </div>
+            
+            <div id="sa" class="sntabcontent" >
+                <p> Cloud Exponence ServiceNow Development URL. Mainly used to check the development task by MSP team</p>
+            </div>
+            
+            <div id="sb" class="sntabcontent">
+                <p>Cloud Exponence Servicenow Platform URL. This is the Cloud Exponence Production URL for Servicenow</p>
+            </div>
+            
+            <div id="sc" class="sntabcontent">
+                <p>Cloud Exponence Servicenow UAT URL. This is mainly used to test the new enhancement performed by MSP team </p>
+            </div>
+            
+            <div id="sd" class="sntabcontent">
+                <p>Cloud Exponence Branded URL. This URL is used by the CSR team for ITSM. This URL contains pre-defined Dashboard and Reports. </p>
+            </div>
+            <div id="se" class="sntabcontent" >
+                <p>MSP portal. This portal is used by production team to work with MSP team to work on any enhancement, new or modification to be done in Servicenow </p>
+            </div>
+            
+              
+            
+            
+            <script>
+            function opensn(evt, cityName) {
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("sntabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablinks");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+              }
+              document.getElementById(cityName).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+            </script>
+            
+          </div>
+
+          <div id="microsoft" class="tabcontent">
+            <h3>Microsoft Remote Desktop </h3>
+            <div  class = "col-md-6" id = "rds" style="top:25%;text-align:center">
+              <a href = "https://secureaccess.cdptcsdev.com/rdweb" target="_blank">Secure Access Portal</a>
+            </div>
+            <div class = "col-md-6" id = "rds_disp">
+              Cloud Exponence Secure Access Portal,Mainly used to connect Custtomer POP Servers
+            </div>
+            <style>
+              #rds_disp{
+                display: none;
+                text-align: center;
+                top:25%;
+              }
+              #rds:hover + #rds_disp{
+                display: block;
+                color: black;
+              }
+            </style>
+            
+          </div>
+          
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'aws')">
+              <img src="./images/aws1.png">
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'qualys')">
+              <img src="./images/qualys.jpg">
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'servicenow')">
+              <img src="./images/sn.png">
+            </button>
+            <button class="tablinks" onclick="openCity(event, 'microsoft')">
+              <img src="./images/msrds.png">
+            </button>
+          </div>
 
           
 
@@ -183,6 +683,26 @@
 
     <!-- Custom Theme Scripts -->
     <script src="./build/js/custom.min.js"></script>
-	
+    <script>
+      function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+    </script>
+   
+   
+    
   </body>
 </html>

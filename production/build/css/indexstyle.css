@@ -2,11 +2,11 @@ body
 {  
     margin: 0;  
     padding: 0;  
-    background-image: url("images/bg.jpg");
+    background-image: url(../../images/wallpaper.png);
     background-repeat: no-repeat;
+   
     background-size: 65% 100vh;
-    font-family: 'Arial';  
-    /* background-color: #f8dfda; */
+    font-family: 'Arial'; 
     background-color: #6d6c93;
 
 } 
@@ -22,7 +22,7 @@ body
     border : 1px solid blanchedalmond;
 }
 .tab {
-    widows: 60%;
+    width: 60%;
     position: relative;
     overflow: hidden;
     border: 1px solid #6d6c93 ;
@@ -50,27 +50,12 @@ body
 
 .tabcontent {
     display: none;
-    /* padding: 6px 12px; */
-    border-top: none;
-    position: relative;
-  }
+ }
  
-#log,#new{  
-    width: 30%;  
-    height: 30px;  
-    border: none;  
-    border-radius: 17px;  
-    padding-left: 7px;  
-    background-color: #292685;  
-    color: wheat;
-    font-size: medium;
-}  
-label{
-position: relative;
-width: 50%;
-}
-#Uname,#Pass{
-   position: relative;
-   width: 50%;
+input [type = submit i]{
+  background-color:#292685;
+  color:wheat;
+  height: 30px;
+  width: 100px;
 }
 

@@ -4,6 +4,20 @@
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot");
   src: url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff") format("woff"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg"); }
 
+.tabcontent h3{
+  text-align: center;
+}
+
+
+.images{
+    border : 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    /* padding: 5px; */
+    width: 30%;
+    height:30%;
+}
+
 .glyphicon {
   position: relative;
   top: 1px;
@@ -921,14 +935,15 @@
   float: left; }
 
 .img-circle.profile_img {
-  width: 20%;
+
   background: #fff;
-  margin-left: 5%;
+  margin-left: 15%;
   z-index: 1000;
   position: inherit;
   margin-top: 20px;
-  border: 1px solid rgba(52, 73, 94, 0.44);
-  padding: 1px; }
+  border: 1px solid rgba(52,73,94,0.44);
+  padding: 4px;
+  }
 
 .profile_info {
   padding: 25px 10px 10px;
@@ -4968,3 +4983,5 @@ ul.notifications {
 
 .calendar-exibit .calendar-table {
   padding: 0 0 4px 0; }
+
+
