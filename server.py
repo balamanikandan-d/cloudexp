@@ -19,8 +19,8 @@ import base64
 
 MONGO_CONN_STRING = "mongodb://localhost:27017/"
 
-#app = Flask(__name__,static_folder="/srv/cloudexp/production",static_url_path='')
-app = Flask(__name__,static_folder="/home/thor/Desktop/Page/cloudexp/production/",static_url_path='')
+app = Flask(__name__,static_folder="/srv/cloudexp/production",static_url_path='')
+#app = Flask(__name__,static_folder="/home/thor/Desktop/Page/cloudexp/production/",static_url_path='')
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.secret_key = os.urandom(12)
