@@ -104,7 +104,6 @@
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="usergroup.html"> User Group Association</a>
-                  
                   <a class="dropdown-item" href="password.html">
                     <span class="badge bg-red pull-right">count</span>
                     <span>Password reset requests</span>
@@ -126,8 +125,9 @@
         <!-- top tiles -->
 
         <!-- /top tiles -->
-
-
+        <div id = "data" style="display: none;">
+        <input type = "text" id ="empid">
+        </div>
 
         <table class="table">
           <thead>
@@ -135,6 +135,7 @@
               <th>Emp Id</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -146,6 +147,7 @@
 
 
       </div>
+
       <!-- /page content -->
 
       <!-- footer content -->
@@ -200,14 +202,24 @@
   <!-- Custom Theme Scripts -->
   <script src="./build/js/custom.min.js"></script>
 
-
+<script>
+  function showdiv(){
+      var x = document.getElementById('data')
+      if(x.style.display ==="none"){
+        x.style.display = "block";
+      }else{
+        x.style.display = "none";
+      }
+    }
+</script>
   <script>
     var auth = JSON.parse(localStorage.getItem('token'))
-      var url = "http://localhost/"
-
+    // var url = "http://40.87.153.49/"
+    var url = "http://localhost/"
     function getTickets() {
+      
       $.ajax({
-        url: url + "tickets",
+        url: url + "users",
         type: 'get',
         dataType: 'json',
         contentType: 'application/json',
@@ -222,10 +234,9 @@
               var ticket_string = ""
               for (var i = 0; i < results.length; i++) {
                 var result = JSON.parse(results[i])
+                console.log("result"+i, result)
                 var append_string = '<tr><td>' + result.empid + '</td><td>' + result.email + '</td><td>' +
-                  result.phone + '</td><td><button onclick="approve(\'' + result.userid.$oid +
-                  '\')">Approve</button><button onclick="decline(\'' + result.userid.$oid +
-                  '\')">Decline</button></td></tr>';
+                  result.phone +  '</td><td>' + result.approved +'</td><td><button onclick="userapprove(\'' + result._id.$oid + '\')">Approve</button> <button onclick="adminapprove(\'' + result._id.$oid + '\')">Approve as admin</button><button onclick="decline(\'' + result._id.$oid + '\')">Decline</button></td></tr>';
                 ticket_string = ticket_string + append_string;
               }
               $("#tickets").html(ticket_string)
@@ -238,12 +249,42 @@
       });
     }
 
+    function view(id){
+        $.ajax({
+        url: url + "getuser?id="+id,
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json',
+        headers: {
+          "Authorization": auth
+        },
+        success: function (res) {
+          if (res) {
+            if (res.code == 0) {
+              var results = JSON.parse(res.results)
+              console.log("results", results)
+              var ticket_string = ""
+              
+                var result = JSON.parse(results[0])
+                console.log("result", result)
+                var append_string = result.empid ;
+                $("#empid").val(result.empid)
+              
+              
+            }
+          } else {
+            alert("error");
+          }
+        },
 
+      });
+    
 
-    function approve(id) {
-      
+    }
+
+    function userapprove(id) {
       $.ajax({
-        url: url + "approve?id=" + id,
+        url: url + "userapprove?id=" + id,
         type: 'put',
         dataType: 'json',
         contentType: 'application/json',
@@ -261,11 +302,31 @@
 
       });
     }
+    function adminapprove(id) {
+      $.ajax({
+        url: url + "adminapprove?id=" + id,
+        type: 'put',
+        dataType: 'json',
+        contentType: 'application/json',
+        headers: {
+          "Authorization": auth
+        },
+        success: function (res) {
+          if (res) {
+            alert(res.result)
+            getTickets();
+          } else {
+            alert("error");
+          }
+        },
 
+      });
+    }
+    
 
 
     function decline(id) {
-      
+        var url = "http://localhost"
       $.ajax({
         url: url + "decline?id=" + id,
         type: 'put',

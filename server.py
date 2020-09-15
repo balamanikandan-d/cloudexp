@@ -19,8 +19,8 @@ import base64
 
 MONGO_CONN_STRING = "mongodb://localhost:27017/"
 
-app = Flask(__name__,static_folder="/srv/cloudexp/production",static_url_path='')
-#app = Flask(__name__,static_folder="/home/thor/Desktop/Page/cloudexp/production/",static_url_path='')
+#app = Flask(__name__,static_folder="/srv/cloudexp/production",static_url_path='')
+app = Flask(__name__,static_folder="/home/thor/Desktop/Page/cloudexp/production/",static_url_path='')
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.secret_key = os.urandom(12)
@@ -104,27 +104,28 @@ def signin():
         ):
             # print("aa", data['adminconsole'])
             # print("bb", userdata['adminconsole'])
-            if (
-                userdata["adminconsole"] == "true"
-            ) or userdata["adminconsole"] == "false":
-                myquery = {"empid": empid}
-                update = {"$set": {}}
-                _uuid = uuid.uuid4().hex
-                update["$set"]["uuid"] = _uuid
-                # print("myquery", myquery)
-                # print("update", update)
-                out = posts.update_one(myquery, update)
-                print(userdata)
-                return jsonify(
-                    {
-                        "result": "Sign in Successfully",
-                        "uuid": _uuid,
-                        "userid": str(userdata["_id"]),
-                        "adminconsole": userdata["adminconsole"]
-                    }
-                )
+            if (userdata["approved"]=="approved"):
+                if (
+                    userdata["adminconsole"] == "true"
+                ) or userdata["adminconsole"] == "false":
+                    myquery = {"empid": empid}
+                    update = {"$set": {}}
+                    _uuid = uuid.uuid4().hex
+                    update["$set"]["uuid"] = _uuid
+                    # print("myquery", myquery)
+                    # print("update", update)
+                    out = posts.update_one(myquery, update)
+                    print(userdata)
+                    return jsonify(
+                        {
+                            "result": "Sign in Successfully",
+                            "uuid": _uuid,
+                            "userid": str(userdata["_id"]),
+                            "adminconsole": userdata["adminconsole"]
+                        }
+                    )
             else:
-                return jsonify({"result": "No Admin permission"})
+                return jsonify({"result": "Awaiting admin approval Try again later!"})
         else:
             return jsonify({"result": "Please Enter the correct Password"})
 
@@ -151,7 +152,8 @@ def signup():
             data["empid"] = empid
             data["created_at"] = datetime.datetime.now()
             data["adminconsole"] = "false"
-            token = uuid.uuid4().hex
+            # token = uuid.uuid4().hex
+            data["approved"]="pending"
             result = posts.insert_one(data)
             return jsonify({"result": "Sign up successfull"})
         else:
@@ -202,6 +204,36 @@ def gettickect(_id):
     response = {'code': 0, 'results': JSONEncoder().encode(json_docs)}       
     return jsonify(response)
 
+@app.route("/users", methods=["GET"])
+@checkAuthenticated
+def users(_id):
+    client = pymongo.MongoClient(MONGO_CONN_STRING)
+    db = client["cloudexp"]
+    fetch = db.users
+    query = {}
+    fetched_data = fetch.find(query)
+    json_docs = []
+    for doc in fetched_data:
+        json_doc = json.dumps(doc, default=json_util.default)
+        json_docs.append(json_doc)
+    response = {'code': 0, 'results': JSONEncoder().encode(json_docs)}       
+    return jsonify(response)
+
+@app.route("/getuser", methods=["GET"])
+@checkAuthenticated
+def getusers(_id):
+    client = pymongo.MongoClient(MONGO_CONN_STRING)
+    db = client["cloudexp"]
+    fetch = db.users
+    query = {"_id":ObjectId(request.args['id'])}
+    fetched_data = fetch.find(query)
+    json_docs = []
+    for doc in fetched_data:
+        json_doc = json.dumps(doc, default=json_util.default)
+        json_docs.append(json_doc)
+    response = {'code': 0, 'results': JSONEncoder().encode(json_docs)}       
+    return jsonify(response)
+
 @app.route("/approve", methods=["PUT"])
 @checkAuthenticated
 def approve(_id):
@@ -217,6 +249,45 @@ def approve(_id):
     fetch.update_one(query, update)
     u_update = {"$set": {}}
     u_update["$set"]["password"] = encryptPassword("Tcs#1234")
+    user.update_one(u_query, u_update)
+    return jsonify({"result": "Approved"})
+
+@app.route("/userapprove", methods=["PUT"])
+@checkAuthenticated
+def userapprove(_id):
+    client = pymongo.MongoClient(MONGO_CONN_STRING)
+    db = client["cloudexp"]
+    fetch = db.tickets
+    user = db.users
+    query = {"userid": ObjectId(request.args['id'])}
+    u_query = {"_id": ObjectId(request.args['id'])}
+    update = {"$set": {}}
+    update["$set"]["approved"] = 1
+    update["$set"]["updated_at"] = datetime.datetime.now()
+    fetch.update_one(query, update)
+    u_update = {"$set": {}}
+    u_update["$set"]["approved"] = "approved"
+    user.update_one(u_query, u_update)
+    return jsonify({"result": "Approved"})
+
+@app.route("/adminapprove", methods=["PUT"])
+@checkAuthenticated
+def adminapprove(_id):
+    client = pymongo.MongoClient(MONGO_CONN_STRING)
+    db = client["cloudexp"]
+    fetch = db.tickets
+    user = db.users
+    query = {"userid": ObjectId(request.args['id'])}
+    u_query = {"_id": ObjectId(request.args['id'])}
+    update = {"$set": {}}
+    update["$set"]["approved"] = 1
+    update["$set"]["updated_at"] = datetime.datetime.now()
+    fetch.update_one(query, update)
+    u_update = {"$set": {}}
+    u_update["$set"]["approved"] = "approved"
+    user.update_one(u_query, u_update)
+    u_update = {"$set": {}}
+    u_update["$set"]["adminconsole"] = "true"
     user.update_one(u_query, u_update)
     return jsonify({"result": "Approved"})
 

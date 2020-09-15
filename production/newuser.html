@@ -30,6 +30,8 @@
     <script src="./js/jquery.js"></script>
     <script>
         $(function () {
+            // var url = "http://40.87.153.49/"
+            var url = "http://localhost/"
             $('#login').on('submit', function (e) {
                 e.preventDefault();
                 // alert("asdsad")
@@ -42,7 +44,7 @@
                 user.phone = $("#phone").val();
                 user.location = $("#location").val();
                 user.role = $("#role").val()
-                var url = "http://40.87.153.49/"
+                
                 $.ajax({
                     url: url + "signup",
                     type: 'post',

@@ -108,6 +108,8 @@
   <script src="./js/jquery.js"></script>
   <script>
     $(function () {
+      // var url = "http://40.87.153.49/"
+      var url = "http://localhost/"
 
       $('#loginpanel').show()
       $('#forgotpanel').hide()
@@ -129,7 +131,7 @@
         user.empid = $("#empid").val();
         user.password = $("#password").val();
         // user.adminconsole = false
-        var url = "http://40.87.153.49/"
+       
         $.ajax({
           url: url + "signin",
           type: 'post',
@@ -164,7 +166,7 @@
 
         user.empid = $("#empid1").val();
 
-        var url = "http://40.87.153.49/"
+        
         $.ajax({
           url: url + "resetpassword",
           type: 'post',
