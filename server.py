@@ -17,7 +17,7 @@ import requests
 from flask import send_from_directory
 import base64
 
-MONGO_CONN_STRING = "mongodb://40.87.153.49:27017/"
+MONGO_CONN_STRING = "mongodb://localhost:27017/"
 
 app = Flask(__name__,static_folder="/srv/cloudexp/production",static_url_path='')
 #app = Flask(__name__,static_folder="/home/thor/Desktop/Page/cloudexp/production/",static_url_path='')
